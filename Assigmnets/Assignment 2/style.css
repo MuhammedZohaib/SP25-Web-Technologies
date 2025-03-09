@@ -367,14 +367,8 @@ section {
   margin-bottom: 15px;
   font-size: 14px;
 }
-
 .new-arrivals .container {
   text-align: center;
-}
-
-.arrivals-slider {
-  position: relative;
-  margin: 40px 0;
 }
 
 .arrivals {
@@ -390,6 +384,7 @@ section {
   flex: 0 0 calc(25% - 15px);
   min-width: 250px;
   text-align: center;
+  position: relative;
 }
 
 .arrival-image {
@@ -397,10 +392,27 @@ section {
   aspect-ratio: 3/4;
   background-size: cover;
   background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.arrival h3 {
-  font-size: 16px;
+.buy-now {
+  position: absolute;
+  bottom: 3%;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.arrival:hover .buy-now {
+  opacity: 1;
 }
 
 .stellas-world .container {
