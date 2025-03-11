@@ -34,7 +34,7 @@
           </a>
         </div>
         <div class="header-right">
-          <a href="#" class="icon-link">
+          <a href="#" class="icon-link search-toggle">
             <i class="fas fa-search"></i>
           </a>
           <a href="#" class="icon-link">
@@ -44,14 +44,122 @@
             <i class="far fa-heart"></i>
           </a>
           <a href="#" class="icon-link">
-            <i class=""
-              ><img
+            <i class="">
+              <img
                 src="https://www.stellamccartney.com/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw70f876c1/farabella-gif.gif"
                 width="25px"
                 style="position: relative; top: -5px; left: -5px"
                 alt=""
-            /></i>
+              />
+            </i>
           </a>
+        </div>
+      </div>
+
+      <!-- Search Overlay -->
+      <div class="search-overlay">
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search Stella McCartney"
+        />
+        <div class="close-search">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+      <!-- Search Content -->
+      <div class="search-content">
+        <div class="search-categories">
+          <div class="search-column">
+            <h3 class="search-heading">Highlights</h3>
+            <ul class="search-list">
+              <li><a href="#">New In</a></li>
+              <li><a href="#">The Iconic Falabella</a></li>
+              <li><a href="#">Ryder</a></li>
+            </ul>
+
+            <h3 class="search-heading" style="margin-top: 20px">
+              Stella's World
+            </h3>
+            <div class="product-item">
+              <div class="product-image-search">
+                <img
+                  src="https://www.stellamccartney.com/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dwecd46e1f/images/Search_Bar_Block_115x75px-Summer25.jpg"
+                  alt=""
+                />
+              </div>
+              <a href="" class="product-name">Early Access: Summer 2025</a>
+            </div>
+          </div>
+
+          <div class="search-column">
+            <h3 class="search-heading">Women</h3>
+            <ul class="search-list">
+              <li><a href="#">Dresses</a></li>
+              <li><a href="#">Denim</a></li>
+              <li><a href="#">Elyse</a></li>
+            </ul>
+
+            <div class="product-item" style="margin-top: 45px">
+              <div class="product-image-search">
+                <img
+                  src="https://www.stellamccartney.com/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw85954126/images/Search_Bar_Block_115x75px-falabella.jpg"
+                  alt=""
+                />
+              </div>
+              <a href="#" class="product-name">Falabella Forever</a>
+            </div>
+          </div>
+
+          <div class="search-column">
+            <h3 class="search-heading">Top Handbags</h3>
+            <div class="product-item">
+              <div class="product-image-search">
+                <img
+                  src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Sites-master_catalog/default/dwf3dce064/Assets/7B0138WP05545742_X/large/c/a/7/1/ca71ac8152b658a523ff63f2792de0733f931e0c_7B0138WP05545742_X.jpg?sw=90&sh=112"
+                  alt=""
+                />
+              </div>
+              <a href="#" class="product-name">Ryder Shoulder Bag</a>
+            </div>
+
+            <div class="product-item">
+              <div class="product-image-search">
+                <img
+                  src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Sites-master_catalog/default/dw968fc3a5/Assets/234387WP05435742_X/large/f/6/9/5/f6957edff3c4f66010086e98b01200c587a501e3_234387WP05435742_X.jpg?sw=90&sh=112"
+                  alt=""
+                />
+              </div>
+              <a href="#" class="product-name">Elyse Perforated Platforms</a>
+            </div>
+          </div>
+
+          <div class="search-column">
+            <h3 class="search-heading">Top Shoes</h3>
+            <div class="product-item">
+              <div class="product-image-search">
+                <img
+                  src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Sites-master_catalog/default/dw8756f039/Assets/810526KP0271000_X/large/e/3/0/2/e3026dd1825be5a5f9cc802dc0a250134a0b1b93_810526KP0271000_X.jpg?sw=90&sh=112"
+                  alt=""
+                />
+              </div>
+              <a href="#" class="product-name">Falabella Fold-Over Tote Bag</a>
+            </div>
+
+            <div class="product-item">
+              <div class="product-image-search">
+                <img
+                  src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Sites-master_catalog/default/dw6f8fef88/Assets/234387W91321000_X/large/e/0/0/9/e009255b33c0ae08ddfc244adf9b9a949e7d7a1c_234387W91321000_X.jpg?sw=90&sh=112"
+                  alt=""
+                />
+              </div>
+              <a href="#" class="product-name">Falabella Fold-Over Tote Bag</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -789,5 +897,25 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Toggle search overlay
+      const searchToggle = document.querySelector(".search-toggle");
+      const searchOverlay = document.querySelector(".search-overlay");
+      const closeSearch = document.querySelector(".close-search");
+      const searchContent = document.querySelector(".search-content");
+
+      searchToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        searchOverlay.classList.add("active");
+        searchContent.classList.add("active");
+        document.querySelector(".search-input").focus();
+      });
+
+      closeSearch.addEventListener("click", function () {
+        searchOverlay.classList.remove("active");
+        searchContent.classList.remove("active");
+      });
+    </script>
   </body>
 </html>
