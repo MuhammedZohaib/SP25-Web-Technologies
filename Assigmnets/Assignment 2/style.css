@@ -86,19 +86,21 @@ section {
 }
 
 .top-bar {
-  background-color: #f5f5f5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px 0;
   font-size: 12px;
+  font-weight: 200;
+  font-family: helvetica;
+  text-transform: uppercase;
 }
 
-.top-bar .container {
+.top-bar-right {
   display: flex;
-  justify-content: space-between;
-}
-
-.top-bar-left {
-  display: flex;
-  align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .top-link {
