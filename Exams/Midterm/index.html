@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Midterm</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://www.stellamccartney.com/on/demandware.static/Sites-smc-row-Site/-/default/dw63be974c/images/favicons/favicon-32x32.png"
+    />
+  </head>
+  <body>
+    <div class="bg-light py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div
+              id="announcementCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner text-center">
+                <div class="carousel-item active">
+                  <small class="text-uppercase"
+                    >Winter 2025: Sign up to shop the new collection
+                    first</small
+                  >
+                </div>
+                <div class="carousel-item">
+                  <small class="text-uppercase"
+                    >Free shipping on all orders over £250</small
+                  >
+                </div>
+                <div class="carousel-item">
+                  <small class="text-uppercase"
+                    >New sustainable collection now available</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="sticky-top bg-white border-bottom">
+      <div class="container py-3">
+        <div class="row align-items-center">
+          <div class="col-4 d-flex justify-content-start">
+            <button
+              class="navbar-toggler d-lg-none border-0"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="col-4 text-center">
+            <a href="#">
+              <img
+                src="https://www.stellamccartney.com/on/demandware.static/Sites-smc-row-Site/-/default/dw2a6f7549/images/logo.svg"
+                alt="Stella McCartney Logo"
+                style="height: 30px; max-width: 100%"
+              />
+            </a>
+          </div>
+          <div class="col-4 d-flex justify-content-end">
+            <a
+              href="#"
+              class="icon-link me-3"
+              data-bs-toggle="modal"
+              data-bs-target="#searchModal"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Search"
+            >
+              <i class="fas fa-search"></i>
+            </a>
+            <a
+              href="#"
+              class="icon-link me-3"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Account"
+            >
+              <i class="far fa-user"></i>
+            </a>
+            <a
+              href="#"
+              class="icon-link me-3"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Wishlist"
+            >
+              <i class="far fa-heart"></i>
+            </a>
+            <a
+              href="#"
+              class="icon-link"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Shopping Bag"
+            >
+              <img
+                src="https://www.stellamccartney.com/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw70f876c1/farabella-gif.gif"
+                width="25px"
+                alt="Cart"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-white py-0">
+        <div class="container">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="newInDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  New In
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="newInDropdown"
+                ></div>
+              </li>
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="womenDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Women
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="womenDropdown"
+                ></div>
+              </li>
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="handbagsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Handbags
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="handbagsDropdown"
+                ></div>
+              </li>
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="shoesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Shoes
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="shoesDropdown"
+                ></div>
+              </li>
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="adidasDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Adidas
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="adidasDropdown"
+                ></div>
+              </li>
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="kidsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Kids
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="kidsDropdown"
+                ></div>
+              </li>
+              <li class="nav-item dropdown position-static">
+                <a
+                  class="nav-link text-uppercase px-3"
+                  href="#"
+                  id="worldDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Stella's World
+                </a>
+                <div
+                  class="dropdown-menu w-100 border-0 rounded-0 m-0 p-4"
+                  aria-labelledby="worldDropdown"
+                ></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <div class="card-header bg-dark text-white">
+                <h4 class="mb-0">Web Development Assignments</h4>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush assignment-list">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <span>Assignment 1: CV using HTML & CSS</span>
+                    <button
+                      class="btn btn-sm btn-outline-dark"
+                      onclick="loadAssignment('Assignment 1/index.html')"
+                    >
+                      View
+                    </button>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <span>Assignment 2: E-Commerce Landing Page</span>
+                    <button
+                      class="btn btn-sm btn-outline-dark"
+                      onclick="loadAssignment('Assignment 2/index.html')"
+                    >
+                      View
+                    </button>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <span>Lab Task 1: Landing Page using Bootstrap</span>
+                    <button
+                      class="btn btn-sm btn-outline-dark"
+                      onclick="loadAssignment('Lab Task 1/index.html')"
+                    >
+                      View
+                    </button>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <span>Lab Task 2: Checkout Page with Validation</span>
+                    <button
+                      class="btn btn-sm btn-outline-dark"
+                      onclick="loadAssignment('Lab Task 2/checkout.html')"
+                    >
+                      View
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card">
+              <div
+                class="card-header bg-dark text-white d-flex justify-content-between align-items-center"
+              >
+                <h4 class="mb-0" id="assignment-title">Assignment Viewer</h4>
+              </div>
+              <div class="card-body p-0">
+                <div class="iframe-container">
+                  <iframe
+                    id="assignment-frame"
+                    src="about:blank"
+                    title="Assignment Viewer"
+                    allowfullscreen
+                  ></iframe>
+                  <div id="placeholder-message">
+                    <div class="text-center p-5">
+                      <i class="fas fa-file-code fa-4x mb-3 text-muted"></i>
+                      <h3>Select an assignment to view</h3>
+                      <p class="text-muted">
+                        Click on any "View" button to load the assignment
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light pt-5 pb-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">Customer Service</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Contact Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >FAQ</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Delivery</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Returns & Exchanges</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Track Your Order</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Cookie Settings</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">Corporate</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Careers</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Privacy</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Modern Slavery Statement</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Accessibility</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">Categories</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Women</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Men</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Kids</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Adidas</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Eyewear</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Fragrance</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3">Follow Us</h6>
+            <div class="mb-4">
+              <a href="#" class="text-secondary me-3"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-secondary me-3"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="text-secondary me-3"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-secondary me-3"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="#" class="text-secondary"
+                ><i class="fab fa-pinterest"></i
+              ></a>
+            </div>
+            <h6 class="text-uppercase fw-bold mb-3">About Us</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Our Sustainability</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >Brand World</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-decoration-none text-secondary small"
+                  >About the Brand</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-top pt-4 mt-4">
+          <div class="row">
+            <div class="col-md-6 small text-muted">
+              <p>© 2025 BRAND NAME. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="col-md-6 small text-muted text-md-end">
+              <p>Powered by Digital Platform</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .assignment-list .btn {
+        transition: all 0.3s ease;
+      }
+
+      .assignment-list .btn:hover {
+        background-color: #212529;
+        color: white;
+      }
+
+      .iframe-container {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        border: 1px solid #dee2e6;
+      }
+
+      #assignment-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      #placeholder-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .fullscreen-iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        background: white;
+      }
+
+      @media (max-width: 768px) {
+        .iframe-container {
+          height: 400px;
+        }
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function loadAssignment(url = "Assignment 1/index.html") {
+        const iframe = document.getElementById("assignment-frame");
+        const placeholder = document.getElementById("placeholder-message");
+        const title = document.getElementById("assignment-title");
+
+        iframe.src = url;
+        placeholder.style.display = "none";
+
+        switch (url) {
+          case "Assignment 1/index.html":
+            title.textContent = "Assignment 1: CV using HTML & CSS";
+            break;
+          case "Assignment 2/index.html":
+            title.textContent = "Assignment 2: E-Commerce Landing Page";
+            break;
+          case "Lab Task 1/index.html":
+            title.textContent = "Lab Task 1: Landing Page using Bootstrap";
+            break;
+          case "Lab Task 2/checkout.html":
+            title.textContent = "Lab Task 2: Checkout Page with Validation";
+            break;
+          default:
+            title.textContent = "Assignment Viewer";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      });
+
+      loadAssignment();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Luxury Fashion</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      .form-control.is-invalid {
+        background-image: none;
+      }
+      .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: none;
+      }
+      .error-message.visible {
+        display: block;
+      }
+      .checkout-header {
+        background-color: #f8f9fa;
+        padding: 1rem 0;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .checkout-section {
+        margin-bottom: 2rem;
+      }
+      .checkout-section-title {
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .order-summary {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.25rem;
+      }
+      .order-summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+      .order-total {
+        font-weight: bold;
+        border-top: 1px solid #dee2e6;
+        padding-top: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .credit-card-icons {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .credit-card-icons i {
+        margin-right: 0.5rem;
+        color: #6c757d;
+      }
+      .form-label {
+        font-weight: 500;
+      }
+      .required-field::after {
+        content: "*";
+        color: #dc3545;
+        margin-left: 0.25rem;
+      }
+      .success-message {
+        display: none;
+        background-color: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="checkout-header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <a href="index.html">
+              <img
+                src="https://www.stellamccartney.com/on/demandware.static/Sites-smc-row-Site/-/default/dw2a6f7549/images/logo.svg"
+                alt="Stella McCartney Logo"
+                style="height: 30px"
+              />
+            </a>
+          </div>
+          <div class="col-md-6 text-end">
+            <span class="text-muted">Secure Checkout</span>
+            <i class="fas fa-lock ms-2 text-success"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+      <div class="row">
+        <div class="col-lg-8">
+          <div id="successMessage" class="success-message">
+            <i class="fas fa-check-circle me-2"></i> Your order has been placed
+            successfully! Thank you for your purchase.
+          </div>
+
+          <h1 class="mb-4">Checkout</h1>
+
+          <form id="checkoutForm" novalidate>
+            <!-- Billing Information -->
+            <div class="checkout-section">
+              <h2 class="checkout-section-title h5">Billing Information</h2>
+
+              <div class="mb-3">
+                <label for="fullName" class="form-label required-field"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  name="fullName"
+                  required
+                  pattern="^[A-Za-z\s]+$"
+                />
+                <div class="error-message" id="fullNameError">
+                  Please enter a valid name (letters only)
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label required-field"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                />
+                <div class="error-message" id="emailError">
+                  Please enter a valid email address
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="phone" class="form-label required-field"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  required
+                  pattern="[0-9]{10,15}"
+                  minlength="10"
+                  maxlength="15"
+                />
+                <div class="error-message" id="phoneError">
+                  Please enter a valid phone number (10-15 digits)
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="address" class="form-label required-field"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                  required
+                />
+                <div class="error-message" id="addressError">
+                  Please enter your address
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="city" class="form-label required-field"
+                    >City</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    name="city"
+                    required
+                  />
+                  <div class="error-message" id="cityError">
+                    Please enter your city
+                  </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                  <label for="zipCode" class="form-label required-field"
+                    >Zip Code</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zipCode"
+                    name="zipCode"
+                    required
+                    pattern="[0-9]{5,10}"
+                  />
+                  <div class="error-message" id="zipCodeError">
+                    Please enter a valid zip code
+                  </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                  <label for="country" class="form-label required-field"
+                    >Country</label
+                  >
+                  <select
+                    class="form-select"
+                    id="country"
+                    name="country"
+                    required
+                  >
+                    <option value="">Select</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                    <option value="IT">Italy</option>
+                  </select>
+                  <div class="error-message" id="countryError">
+                    Please select your country
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="checkout-section">
+              <h2 class="checkout-section-title h5">Payment Information</h2>
+
+              <div class="credit-card-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-discover"></i>
+              </div>
+
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label required-field"
+                  >Card Number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardNumber"
+                  name="cardNumber"
+                  required
+                  pattern="[0-9]{16}"
+                  maxlength="16"
+                  placeholder="XXXX XXXX XXXX XXXX"
+                />
+                <div class="error-message" id="cardNumberError">
+                  Please enter a valid 16-digit card number
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="expiryDate" class="form-label required-field"
+                    >Expiry Date (MM/YYYY)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="expiryDate"
+                    name="expiryDate"
+                    required
+                    placeholder="MM/YYYY"
+                    pattern="(0[1-9]|1[0-2])\/20[2-9][0-9]"
+                  />
+                  <div class="error-message" id="expiryDateError">
+                    Please enter a valid future expiry date (MM/YYYY)
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label required-field">CVV</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cvv"
+                    name="cvv"
+                    required
+                    pattern="[0-9]{3}"
+                    maxlength="3"
+                  />
+                  <div class="error-message" id="cvvError">
+                    Please enter a valid 3-digit CVV
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="nameOnCard" class="form-label required-field"
+                  >Name on Card</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nameOnCard"
+                  name="nameOnCard"
+                  required
+                  pattern="^[A-Za-z\s]+$"
+                />
+                <div class="error-message" id="nameOnCardError">
+                  Please enter the name as it appears on your card
+                </div>
+              </div>
+            </div>
+
+            <div class="form-check mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="savePaymentInfo"
+              />
+              <label class="form-check-label" for="savePaymentInfo">
+                Save payment information for future purchases
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg w-100">
+              Place Order
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <div class="order-summary">
+            <h2 class="h5 mb-4">Order Summary</h2>
+
+            <div class="order-summary-item">
+              <span>Ryder Shoulder Bag</span>
+              <span>£1,450.00</span>
+            </div>
+
+            <div class="order-summary-item">
+              <span>Subtotal</span>
+              <span>£1,450.00</span>
+            </div>
+
+            <div class="order-summary-item">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+
+            <div class="order-summary-item">
+              <span>Tax</span>
+              <span>£290.00</span>
+            </div>
+
+            <div class="order-summary-item order-total">
+              <span>Total</span>
+              <span>£1,740.00</span>
+            </div>
+
+            <hr />
+
+            <div class="mb-3">
+              <label for="promoCode" class="form-label">Promo Code</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="promoCode"
+                  placeholder="Enter code"
+                />
+                <button class="btn btn-outline-secondary" type="button">
+                  Apply
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <p class="small mb-1">
+                <i class="fas fa-truck me-2"></i> Free shipping on all orders
+                over £250
+              </p>
+              <p class="small mb-1">
+                <i class="fas fa-undo me-2"></i> Free returns within 14 days
+              </p>
+              <p class="small">
+                <i class="fas fa-shield-alt me-2"></i> Secure payment
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="small text-muted mb-0">
+              © 2025 Luxury Fashion. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="small text-muted mb-0">
+              <i class="fas fa-lock me-1"></i> Secure Payment
+              <i class="fas fa-shield-alt mx-1"></i> Privacy Protected
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Form Validation Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("checkoutForm");
+
+        // Format credit card number with spaces
+        const cardNumberInput = document.getElementById("cardNumber");
+        cardNumberInput.addEventListener("input", function (e) {
+          // Remove any non-digit characters
+          let value = e.target.value.replace(/\D/g, "");
+
+          // Limit to 16 digits
+          if (value.length > 16) {
+            value = value.slice(0, 16);
+          }
+
+          // Update the input value
+          e.target.value = value;
+        });
+
+        // Format expiry date
+        const expiryDateInput = document.getElementById("expiryDate");
+        expiryDateInput.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
+
+          if (value.length > 6) {
+            value = value.slice(0, 6);
+          }
+
+          if (value.length > 2) {
+            value = value.slice(0, 2) + "/" + value.slice(2);
+          }
+
+          e.target.value = value;
+        });
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Reset previous error states
+          const errorMessages = document.querySelectorAll(".error-message");
+          errorMessages.forEach((msg) => msg.classList.remove("visible"));
+
+          const formInputs = form.querySelectorAll("input, select");
+          formInputs.forEach((input) => input.classList.remove("is-invalid"));
+
+          let isValid = true;
+
+          // Validate Full Name (letters only)
+          const fullName = document.getElementById("fullName");
+          if (!fullName.value.trim() || !/^[A-Za-z\s]+$/.test(fullName.value)) {
+            showError(fullName, "fullNameError");
+            isValid = false;
+          }
+
+          // Validate Email
+          const email = document.getElementById("email");
+          if (
+            !email.value.trim() ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)
+          ) {
+            showError(email, "emailError");
+            isValid = false;
+          }
+
+          // Validate Phone (digits only, 10-15 digits)
+          const phone = document.getElementById("phone");
+          if (!phone.value.trim() || !/^[0-9]{10,15}$/.test(phone.value)) {
+            showError(phone, "phoneError");
+            isValid = false;
+          }
+
+          // Validate Address
+          const address = document.getElementById("address");
+          if (!address.value.trim()) {
+            showError(address, "addressError");
+            isValid = false;
+          }
+
+          // Validate City
+          const city = document.getElementById("city");
+          if (!city.value.trim()) {
+            showError(city, "cityError");
+            isValid = false;
+          }
+
+          // Validate Zip Code
+          const zipCode = document.getElementById("zipCode");
+          if (!zipCode.value.trim() || !/^[0-9]{5,10}$/.test(zipCode.value)) {
+            showError(zipCode, "zipCodeError");
+            isValid = false;
+          }
+
+          // Validate Country
+          const country = document.getElementById("country");
+          if (!country.value) {
+            showError(country, "countryError");
+            isValid = false;
+          }
+
+          // Validate Card Number (16 digits)
+          const cardNumber = document.getElementById("cardNumber");
+          if (
+            !cardNumber.value.trim() ||
+            !/^[0-9]{16}$/.test(cardNumber.value)
+          ) {
+            showError(cardNumber, "cardNumberError");
+            isValid = false;
+          }
+
+          // Validate Expiry Date (MM/YYYY format and future date)
+          const expiryDate = document.getElementById("expiryDate");
+          if (
+            !expiryDate.value.trim() ||
+            !isValidExpiryDate(expiryDate.value)
+          ) {
+            showError(expiryDate, "expiryDateError");
+            isValid = false;
+          }
+
+          // Validate CVV (3 digits)
+          const cvv = document.getElementById("cvv");
+          if (!cvv.value.trim() || !/^[0-9]{3}$/.test(cvv.value)) {
+            showError(cvv, "cvvError");
+            isValid = false;
+          }
+
+          // Validate Name on Card
+          const nameOnCard = document.getElementById("nameOnCard");
+          if (
+            !nameOnCard.value.trim() ||
+            !/^[A-Za-z\s]+$/.test(nameOnCard.value)
+          ) {
+            showError(nameOnCard, "nameOnCardError");
+            isValid = false;
+          }
+
+          // If form is valid, show success message and reset form
+          if (isValid) {
+            document.getElementById("successMessage").style.display = "block";
+            form.reset();
+
+            // Scroll to top to see success message
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            // Hide success message after 5 seconds
+            setTimeout(function () {
+              document.getElementById("successMessage").style.display = "none";
+            }, 5000);
+          }
+        });
+
+        // Helper function to show error message
+        function showError(inputElement, errorId) {
+          inputElement.classList.add("is-invalid");
+          document.getElementById(errorId).classList.add("visible");
+        }
+
+        // Helper function to validate expiry date
+        function isValidExpiryDate(dateString) {
+          // Check format MM/YYYY
+          if (!/^(0[1-9]|1[0-2])\/20[2-9][0-9]$/.test(dateString)) {
+            return false;
+          }
+
+          const [month, year] = dateString.split("/");
+          const expiryDate = new Date(parseInt(year), parseInt(month) - 1, 1);
+          const today = new Date();
+
+          // Set today to the first day of the month for proper comparison
+          today.setDate(1);
+
+          // Check if expiry date is in the future
+          return expiryDate > today;
+        }
+
+        // Real-time validation for inputs
+        const formInputs = form.querySelectorAll("input, select");
+        formInputs.forEach((input) => {
+          input.addEventListener("blur", function () {
+            validateInput(this);
+          });
+
+          input.addEventListener("input", function () {
+            // Remove error state when user starts typing
+            this.classList.remove("is-invalid");
+            const errorId = this.id + "Error";
+            const errorElement = document.getElementById(errorId);
+            if (errorElement) {
+              errorElement.classList.remove("visible");
+            }
+          });
+        });
+
+        // Helper function for real-time validation
+        function validateInput(input) {
+          const id = input.id;
+          const value = input.value.trim();
+
+          switch (id) {
+            case "fullName":
+            case "nameOnCard":
+              if (!value || !/^[A-Za-z\s]+$/.test(value)) {
+                showError(input, id + "Error");
+              }
+              break;
+
+            case "email":
+              if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                showError(input, "emailError");
+              }
+              break;
+
+            case "phone":
+              if (!value || !/^[0-9]{10,15}$/.test(value)) {
+                showError(input, "phoneError");
+              }
+              break;
+
+            case "address":
+            case "city":
+              if (!value) {
+                showError(input, id + "Error");
+              }
+              break;
+
+            case "zipCode":
+              if (!value || !/^[0-9]{5,10}$/.test(value)) {
+                showError(input, "zipCodeError");
+              }
+              break;
+
+            case "country":
+              if (!value) {
+                showError(input, "countryError");
+              }
+              break;
+
+            case "cardNumber":
+              if (!value || !/^[0-9]{16}$/.test(value)) {
+                showError(input, "cardNumberError");
+              }
+              break;
+
+            case "expiryDate":
+              if (!value || !isValidExpiryDate(value)) {
+                showError(input, "expiryDateError");
+              }
+              break;
+
+            case "cvv":
+              if (!value || !/^[0-9]{3}$/.test(value)) {
+                showError(input, "cvvError");
+              }
+              break;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
