@@ -1,0 +1,55 @@
+<!-- Login Section -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Login</h2>
+
+          <form
+            method="POST"
+            action="/login"
+            class="needs-validation"
+            novalidate
+          >
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control <%= typeof errors !== 'undefined' && errors.find(e => e.msg.includes('email')) ? 'is-invalid' : '' %>"
+                id="email"
+                name="email"
+                value="<%= typeof email !== 'undefined' ? email : '' %>"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a valid email address
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control <%= typeof errors !== 'undefined' && errors.find(e => e.msg.includes('Password')) ? 'is-invalid' : '' %>"
+                id="password"
+                name="password"
+                required
+              />
+              <div class="invalid-feedback">Please enter your password</div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark">Login</button>
+            </div>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="mb-0">
+              Don't have an account?
+              <a href="/register" class="text-decoration-none">Register here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

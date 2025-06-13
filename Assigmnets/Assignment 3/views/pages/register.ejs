@@ -1,0 +1,66 @@
+<!-- Register Section -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Register</h2>
+          <form action="/register" method="POST">
+            <div class="form-group mb-3">
+              <label>Full Name:</label>
+              <input type="text" name="name" class="form-control" required />
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Email Address:</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                value="<%= email %>"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                required
+                minlength="6"
+                value="<%= password %>"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Confirm Password:</label>
+              <input
+                type="password"
+                name="password2"
+                class="form-control"
+                required
+                value="<%= password2 %>"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="submit"
+                value="Register"
+                class="btn btn-dark w-100"
+              />
+            </div>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="mb-0">
+              Already have an account?
+              <a href="/login" class="text-decoration-none">Login here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

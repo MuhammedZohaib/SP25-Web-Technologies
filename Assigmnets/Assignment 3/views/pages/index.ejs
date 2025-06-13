@@ -1,0 +1,320 @@
+<!-- Top Announcement Bar -->
+<div class="bg-light py-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Bootstrap Carousel for Announcements -->
+        <div
+          id="announcementCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <small class="text-uppercase"
+                >Winter 2025: Sign up to shop the new collection first</small
+              >
+            </div>
+            <div class="carousel-item">
+              <small class="text-uppercase"
+                >Free shipping on all orders over £250</small
+              >
+            </div>
+            <div class="carousel-item">
+              <small class="text-uppercase"
+                >New sustainable collection now available</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section
+  class="hero-section position-relative top-0"
+  style="
+    background-image: url('https://www.stellamccartney.com/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dwd40d7832/images/Landing/PLP%20Content%20Images/2025%20PLP%20Banner/SMC_SU25_ECOM_SWPLPLP_1232x659px_1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+  "
+>
+  <div
+    class="position-absolute bottom-0 start-0 w-100 p-5 text-white"
+    style="
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+      );
+    "
+  >
+    <div class="container">
+      <h2 class="display-4 mb-4">Save What You Love</h2>
+      <div class="d-flex gap-3">
+        <a href="#" class="btn btn-light text-uppercase px-4 py-2"
+          >Shop New Collection</a
+        >
+        <a href="#" class="btn btn-outline-light text-uppercase px-4 py-2"
+          >Discover</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Runway Section -->
+<section class="py-5 text-center">
+  <div class="container">
+    <h2 class="text-uppercase mb-3">Winter 20XX Runway Show</h2>
+    <p class="mb-4">Sign up to shop the new collection first</p>
+    <button class="btn btn-dark text-uppercase px-4 py-2">Subscribe</button>
+  </div>
+</section>
+
+<!-- Icons Section with Carousel -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center text-uppercase mb-5">Stella's Icons</h2>
+
+    <!-- Bootstrap Carousel for Products -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <% products.forEach(product => { %>
+            <div class="col-md-3 mb-4">
+              <div class="card border-0 bg-transparent">
+                <img
+                  src="<%= product.image %>"
+                  class="card-img-top"
+                  alt="<%= product.name %>"
+                />
+                <div class="card-body px-0 text-center">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <p class="card-text text-muted"><%= product.price %></p>
+                  <button
+                    class="btn btn-sm btn-outline-dark"
+                    data-bs-toggle="modal"
+                    data-bs-target="#quickViewModal"
+                    data-product-name="<%= product.name %>"
+                    data-product-price="<%= product.price %>"
+                    data-product-image="<%= product.image %>"
+                    data-product-id="<%= product.id %>"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#productCarousel"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon bg-dark rounded-circle"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#productCarousel"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon bg-dark rounded-circle"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Stories Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center text-uppercase mb-5">Latest Stories</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="position-relative">
+          <img
+            src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dwa399e592/images/HomePage/2025/Mar/Week%2010/HOMEPAGE_PORTRAIT_SLOT_523X654px2.jpg?sw=530&sh=663"
+            class="img-fluid"
+            alt="Falabella Icons"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+            style="
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.7) 100%
+              );
+            "
+          >
+            <h3>Just in: Falabella Icons</h3>
+            <p class="small text-uppercase">SEASONAL SHADES</p>
+            <a href="#" class="btn btn-light btn-sm text-uppercase px-4"
+              >Shop the icon</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="position-relative">
+          <img
+            src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw78a805a1/images/SW/2025/SMC_WI25_SHOW_HP_PORTRAIT.jpg?sw=530&sh=663"
+            class="img-fluid"
+            alt="Winter 2025 Runway Show"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+            style="
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.7) 100%
+              );
+            "
+          >
+            <h3>Laptop to Lapdance</h3>
+            <p class="small text-uppercase">WINTER 2025 RUNWAY SHOW</p>
+            <a href="#" class="btn btn-light btn-sm text-uppercase px-4"
+              >Shop the edit</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="position-relative">
+          <img
+            src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw29d68926/images/HomePage/2025/Mar/Week%2010/HOMEPAGE_PORTRAIT_SLOT_523X654px3.jpg?sw=530&sh=663"
+            class="img-fluid"
+            alt="New editions: Ryder"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+            style="
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.7) 100%
+              );
+            "
+          >
+            <h3>New editions: Ryder</h3>
+            <p class="small text-uppercase">NEW EDITIONS: RYDER</p>
+            <a href="#" class="btn btn-light btn-sm text-uppercase px-4"
+              >Shop Bags</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick View Modal -->
+<div
+  class="modal fade"
+  id="quickViewModal"
+  tabindex="-1"
+  aria-labelledby="quickViewModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="quickViewModalLabel">Quick View</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              id="quickViewImage"
+              src="/placeholder.svg"
+              alt="Product Image"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-6">
+            <h4 id="quickViewName"></h4>
+            <p id="quickViewPrice" class="text-muted mb-4"></p>
+            <div class="mb-3">
+              <label for="quickViewSize" class="form-label">Size</label>
+              <select class="form-select" id="quickViewSize">
+                <option selected>Select Size</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="quickViewQuantity" class="form-label">Quantity</label>
+              <div class="input-group">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="decreaseQuantity"
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  class="form-control text-center"
+                  id="quickViewQuantity"
+                  value="1"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="increaseQuantity"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-dark text-uppercase">Add to Bag</button>
+              <button class="btn btn-outline-dark text-uppercase">
+                Add to Wishlist
+              </button>
+            </div>
+            <div class="mt-4">
+              <p class="small mb-2">
+                <i class="fas fa-truck me-2"></i> Free shipping on orders over
+                £250
+              </p>
+              <p class="small mb-2">
+                <i class="fas fa-undo me-2"></i> Free returns within 14 days
+              </p>
+              <p class="small">
+                <i class="fas fa-shield-alt me-2"></i> Secure payment
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
