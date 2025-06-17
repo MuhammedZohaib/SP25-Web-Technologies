@@ -1,0 +1,119 @@
+<!-- Register Section -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Create Account</h2>
+
+          <form
+            action="/register"
+            method="POST"
+            class="needs-validation"
+            novalidate
+          >
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control <%= typeof errors !== 'undefined' && errors.find(e => e.msg.includes('Name')) ? 'is-invalid' : '' %>"
+                id="name"
+                name="name"
+                value="<%= typeof name !== 'undefined' ? name : '' %>"
+                required
+                minlength="2"
+                maxlength="50"
+              />
+              <div class="invalid-feedback">
+                Please enter your full name (2-50 characters)
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control <%= typeof errors !== 'undefined' && errors.find(e => e.msg.includes('email')) ? 'is-invalid' : '' %>"
+                id="email"
+                name="email"
+                value="<%= typeof email !== 'undefined' ? email : '' %>"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a valid email address
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control <%= typeof errors !== 'undefined' && errors.find(e => e.msg.includes('Password')) ? 'is-invalid' : '' %>"
+                id="password"
+                name="password"
+                value="<%= typeof password !== 'undefined' ? password : '' %>"
+                required
+                minlength="6"
+              />
+              <div class="invalid-feedback">
+                Password must be at least 6 characters and include numbers,
+                lowercase and uppercase letters
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password2" class="form-label">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control <%= typeof errors !== 'undefined' && errors.find(e => e.msg.includes('Passwords do not match')) ? 'is-invalid' : '' %>"
+                id="password2"
+                name="password2"
+                value="<%= typeof password2 !== 'undefined' ? password2 : '' %>"
+                required
+              />
+              <div class="invalid-feedback">Passwords must match</div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark">Register</button>
+            </div>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="mb-0">
+              Already have an account?
+              <a href="/login" class="text-decoration-none">Login here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form Validation Script -->
+<script>
+  (function () {
+    "use strict";
+    window.addEventListener(
+      "load",
+      function () {
+        var forms = document.getElementsByClassName("needs-validation");
+        Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      },
+      false
+    );
+  })();
+</script>

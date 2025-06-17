@@ -1,0 +1,57 @@
+<!-- Products Page -->
+<div class="container py-5">
+  <h1 class="mb-4">Our Products</h1>
+
+  <!-- Products Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <% products.forEach(product => { %>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img
+          src="<%= product.image %>"
+          class="card-img-top"
+          alt="<%= product.name %>"
+          style="height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text">
+            <strong class="text-primary"
+              >£<%= product.price.toFixed(2) %></strong
+            >
+          </p>
+          <form action="/cart/add" method="POST">
+            <input type="hidden" name="productId" value="<%= product._id %>" />
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark">Add to Cart</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+
+  <!-- Pagination -->
+  <% if (totalPages > 1) { %>
+  <nav aria-label="Product navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+      <% if (hasPreviousPage) { %>
+      <li class="page-item">
+        <a class="page-link" href="/products?page=<%= previousPage %>"
+          >Previous</a
+        >
+      </li>
+      <% } %> <% for(let i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+        <a class="page-link" href="/products?page=<%= i %>"><%= i %></a>
+      </li>
+      <% } %> <% if (hasNextPage) { %>
+      <li class="page-item">
+        <a class="page-link" href="/products?page=<%= nextPage %>">Next</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+  <% } %>
+</div>

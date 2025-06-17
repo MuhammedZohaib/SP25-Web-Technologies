@@ -1,0 +1,263 @@
+<section
+  class="hero-section position-relative"
+  style="height: 100vh; overflow: hidden"
+>
+  <div
+    class="hero-image position-absolute w-100 h-100"
+    style="
+      background: url('https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dwd40d7832/images/Landing/PLP%20Content%20Images/2025%20PLP%20Banner/SMC_SU25_ECOM_SWPLPLP_1232x659px_1.jpg')
+        no-repeat center center;
+      background-size: cover;
+      filter: brightness(0.85);
+    "
+  ></div>
+  <div class="position-absolute w-100 h-100 d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="text-white">
+            <h1 class="display-4 fw-bold mb-4">Luxury Fashion Collection</h1>
+            <p class="lead mb-4">
+              Discover our latest arrivals and exclusive pieces that define
+              modern luxury.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="/products" class="btn btn-light btn-lg">Shop Now</a>
+              <a href="#featured" class="btn btn-outline-light btn-lg"
+                >View Featured</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products Section with Carousel -->
+<section id="featured" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-4">
+        <h2>Featured Products</h2>
+        <p class="text-muted">Check out our latest collection</p>
+      </div>
+    </div>
+
+    <!-- Products Carousel -->
+    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% for(let i = 0; i < products.length; i += 4) { %>
+        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <% products.slice(i, i + 4).forEach(product => { %>
+            <div class="col">
+              <div class="card h-100 shadow-sm">
+                <div class="position-relative">
+                  <img
+                    src="<%= product.image %>"
+                    class="card-img-top"
+                    alt="<%= product.name %>"
+                    style="height: 200px; object-fit: cover"
+                  />
+                  <div class="position-absolute top-0 end-0 p-2">
+                    <button
+                      class="btn btn-light btn-sm rounded-circle shadow-sm"
+                      title="Add to Wishlist"
+                    >
+                      <i class="fas fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-truncate"><%= product.name %></h5>
+                  <p class="card-text">
+                    <strong class="text-primary"
+                      >£<%= product.price.toFixed(2) %></strong
+                    >
+                  </p>
+                  <form action="/cart/add" method="POST">
+                    <input
+                      type="hidden"
+                      name="productId"
+                      value="<%= product._id %>"
+                    />
+                    <div class="d-grid">
+                      <button type="submit" class="btn btn-dark">
+                        Add to Cart
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#featuredCarousel"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon bg-dark rounded-circle"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#featuredCarousel"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon bg-dark rounded-circle"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/products" class="btn btn-outline-dark btn-lg"
+        >View All Products</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- Stories Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center text-uppercase mb-5">Latest Stories</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="position-relative">
+          <img
+            src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dwa399e592/images/HomePage/2025/Mar/Week%2010/HOMEPAGE_PORTRAIT_SLOT_523X654px2.jpg?sw=530&sh=663"
+            class="img-fluid"
+            alt="Falabella Icons"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+            style="
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.7) 100%
+              );
+            "
+          >
+            <h3>Just in: Falabella Icons</h3>
+            <p class="small text-uppercase">SEASONAL SHADES</p>
+            <a href="#" class="btn btn-light btn-sm text-uppercase px-4"
+              >Shop the icon</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="position-relative">
+          <img
+            src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw78a805a1/images/SW/2025/SMC_WI25_SHOW_HP_PORTRAIT.jpg?sw=530&sh=663"
+            class="img-fluid"
+            alt="Winter 2025 Runway Show"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+            style="
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.7) 100%
+              );
+            "
+          >
+            <h3>Laptop to Lapdance</h3>
+            <p class="small text-uppercase">WINTER 2025 RUNWAY SHOW</p>
+            <a href="#" class="btn btn-light btn-sm text-uppercase px-4"
+              >Shop the edit</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="position-relative">
+          <img
+            src="https://www.stellamccartney.com/dw/image/v2/BCWD_PRD/on/demandware.static/-/Library-Sites-StellaMcCartneySharedLibrary/default/dw29d68926/images/HomePage/2025/Mar/Week%2010/HOMEPAGE_PORTRAIT_SLOT_523X654px3.jpg?sw=530&sh=663"
+            class="img-fluid"
+            alt="New editions: Ryder"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+            style="
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.7) 100%
+              );
+            "
+          >
+            <h3>New editions: Ryder</h3>
+            <p class="small text-uppercase">NEW EDITIONS: RYDER</p>
+            <a href="#" class="btn btn-light btn-sm text-uppercase px-4"
+              >Shop Bags</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add custom script for carousels -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Featured Products Carousel
+    var featuredCarousel = new bootstrap.Carousel(
+      document.getElementById("featuredCarousel"),
+      {
+        interval: 5000,
+        wrap: true,
+      }
+    );
+
+    // Announcements Carousel
+    var announcementCarousel = new bootstrap.Carousel(
+      document.getElementById("announcementCarousel"),
+      {
+        interval: 3000,
+        wrap: true,
+      }
+    );
+  });
+</script>
+
+<!-- Add custom styles -->
+<style>
+  .hero-section {
+    position: relative;
+    background-color: #000;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+    padding: 1rem;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+  }
+</style>
