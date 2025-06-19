@@ -1,0 +1,121 @@
+<!-- Edit Vehicle -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Edit Vehicle</h2>
+
+          <form
+            action="/admin/vehicles/edit/<%= vehicle._id %>"
+            method="POST"
+            class="needs-validation"
+            enctype="multipart/form-data"
+            novalidate
+          >
+            <div class="mb-3">
+              <label for="name" class="form-label">Vehicle Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                value="<%= vehicle.name %>"
+                required
+              />
+              <div class="invalid-feedback">Please enter a vehicle name</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="brand" class="form-label">Brand</label>
+              <input
+                type="text"
+                class="form-control"
+                id="brand"
+                name="brand"
+                value="<%= vehicle.brand %>"
+                required
+              />
+              <div class="invalid-feedback">Please enter a brand name</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Price (£)</label>
+              <input
+                type="number"
+                step="0.01"
+                class="form-control"
+                id="price"
+                name="price"
+                value="<%= vehicle.price %>"
+                required
+              />
+              <div class="invalid-feedback">Please enter a valid price</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="type" class="form-label">Vehicle Type</label>
+              <select class="form-select" id="type" name="type" required>
+                <option value="">Select a type</option>
+                <option value="sedan" <%= vehicle.type === 'sedan' ? 'selected' : '' %>>Sedan</option>
+                <option value="SUV" <%= vehicle.type === 'SUV' ? 'selected' : '' %>>SUV</option>
+                <option value="truck" <%= vehicle.type === 'truck' ? 'selected' : '' %>>Truck</option>
+                <option value="sports" <%= vehicle.type === 'sports' ? 'selected' : '' %>>Sports</option>
+                <option value="luxury" <%= vehicle.type === 'luxury' ? 'selected' : '' %>>Luxury</option>
+                <option value="electric" <%= vehicle.type === 'electric' ? 'selected' : '' %>>Electric</option>
+              </select>
+              <div class="invalid-feedback">Please select a vehicle type</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Vehicle Image</label>
+              <input
+                type="file"
+                class="form-control"
+                id="image"
+                name="image"
+                accept="image/*"
+              />
+              <div class="invalid-feedback">Please upload an image</div>
+              <div class="mt-2">
+                <img
+                  src="<%= vehicle.image %>"
+                  alt="<%= vehicle.name %>"
+                  class="img-thumbnail"
+                  style="height: 100px"
+                />
+              </div>
+              <small class="text-muted">Leave empty to keep the current image</small>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-dark">Update Vehicle</button>
+              <a href="/admin/vehicles" class="btn btn-outline-dark">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form Validation Script -->
+<script>
+  (function () {
+    "use strict";
+    var forms = document.querySelectorAll(".needs-validation");
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script> 

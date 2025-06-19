@@ -1,0 +1,71 @@
+<!-- Vehicles Page -->
+<div class="container py-5">
+  <h1 class="mb-4">Our Vehicle Collection</h1>
+
+  <!-- Vehicles Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <% vehicles.forEach(vehicle => { %>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img
+          src="<%= vehicle.image %>"
+          class="card-img-top"
+          alt="<%= vehicle.name %>"
+          style="height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%= vehicle.name %></h5>
+          <p class="card-text mb-1">
+            <strong class="text-primary"
+              >£<%= vehicle.price.toFixed(2) %></strong
+            >
+          </p>
+          <p class="card-text mb-2">
+            <span class="badge bg-secondary"><%= vehicle.type %></span>
+            <small class="text-muted ms-2"><%= vehicle.brand %></small>
+          </p>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-dark"
+              onclick="alert('Contact our sales team to inquire about this vehicle.')"
+            >
+              Inquire Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+
+  <!-- Pagination -->
+  <% if (totalPages > 1) { %>
+  <nav aria-label="Vehicle navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+      <% if (hasPreviousPage) { %>
+      <li class="page-item">
+        <a class="page-link" href="/vehicles?page=<%= previousPage %>"
+          >Previous</a
+        >
+      </li>
+      <% } %> <% for(let i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+        <a class="page-link" href="/vehicles?page=<%= i %>"><%= i %></a>
+      </li>
+      <% } %> <% if (hasNextPage) { %>
+      <li class="page-item">
+        <a class="page-link" href="/vehicles?page=<%= nextPage %>">Next</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+  <% } %>
+</div>
+
+<!-- Add custom styles -->
+<style>
+  .card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+</style>

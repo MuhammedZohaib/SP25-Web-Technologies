@@ -1,0 +1,20 @@
+<!-- Error Page -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-1 mb-4"><%= title %></h1>
+      <div class="alert alert-danger mb-4"><%= message %></div>
+      <% if (process.env.NODE_ENV === 'development' && error) { %>
+      <div class="card mb-4">
+        <div class="card-header">Error Details</div>
+        <div class="card-body">
+          <pre
+            class="mb-0"
+          ><code><%= JSON.stringify(error, null, 2) %></code></pre>
+        </div>
+      </div>
+      <% } %>
+      <a href="/" class="btn btn-dark">Return to Home</a>
+    </div>
+  </div>
+</div>

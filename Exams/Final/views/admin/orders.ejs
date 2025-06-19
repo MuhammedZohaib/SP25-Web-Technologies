@@ -1,0 +1,166 @@
+<!-- Orders Management -->
+<div class="container py-5">
+  <h2 class="mb-4">Manage Orders</h2>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <% if (orders.length > 0) { %>
+      <div class="table-responsive">
+        <table class="table align-middle table-hover">
+          <thead class="table-light">
+            <tr>
+              <th style="width: 15%">Order ID</th>
+              <th style="width: 20%">Customer</th>
+              <th style="width: 25%">Items</th>
+              <th style="width: 10%">Total</th>
+              <th style="width: 12%">Status</th>
+              <th style="width: 10%">Date</th>
+              <th style="width: 8%">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="border-top-0">
+            <% orders.forEach((order, index) => { %>
+            <tr>
+              <td class="text-break">
+                <small class="text-secondary"><%= order._id %></small>
+              </td>
+              <td>
+                <div class="d-flex flex-column">
+                  <strong><%= order.shippingDetails.name %></strong>
+                  <small class="text-muted"><%= order.shippingDetails.phoneNumber %></small>
+                  <small class="text-muted text-wrap"><%= order.shippingDetails.address %></small>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex flex-column gap-2">
+                  <% order.items.forEach(item => { %>
+                  <div class="d-flex align-items-center">
+                    <div class="rounded border me-2" style="width: 30px; height: 30px; overflow: hidden;">
+                      <img src="<%= item.product.image %>" alt="" class="w-100 h-100" style="object-fit: cover;">
+                    </div>
+                    <small class="text-nowrap text-truncate"><%= item.product.name %> × <%= item.quantity %></small>
+                  </div>
+                  <% }); %>
+                </div>
+              </td>
+              <td class="text-nowrap">£<%= order.totalAmount.toFixed(2) %></td>
+              <td>
+                <form action="/admin/orders/<%= order._id %>/status" method="POST">
+                  <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="pending" <%= order.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                    <option value="confirmed" <%= order.status === 'confirmed' ? 'selected' : '' %>>Confirmed</option>
+                    <option value="shipped" <%= order.status === 'shipped' ? 'selected' : '' %>>Shipped</option>
+                    <option value="delivered" <%= order.status === 'delivered' ? 'selected' : '' %>>Delivered</option>
+                  </select>
+                </form>
+              </td>
+              <td class="text-nowrap">
+                <div class="d-flex flex-column">
+                  <small><%= new Date(order.createdAt).toLocaleDateString() %></small>
+                  <small class="text-muted"><%= new Date(order.createdAt).toLocaleTimeString() %></small>
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#orderModal<%= order._id %>">
+                  Details
+                </button>
+              </td>
+            </tr>
+            <% if (index < orders.length - 1) { %>
+            <tr class="spacer">
+              <td colspan="7" class="p-0">
+                <div style="height: 0.5rem;"></div>
+              </td>
+            </tr>
+            <% } %>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Order Details Modals -->
+      <% orders.forEach(order => { %>
+        <div class="modal fade" id="orderModal<%= order._id %>" tabindex="-1" aria-labelledby="orderModalLabel<%= order._id %>" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content shadow-lg border-0">
+              <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title" id="orderModalLabel<%= order._id %>">Order Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body pt-3">
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="card h-100 border-0 bg-light">
+                      <div class="card-body">
+                        <h6 class="card-title fw-bold mb-3">Customer Information</h6>
+                        <p class="card-text mb-0">
+                          <strong>Name:</strong> <%= order.shippingDetails.name %><br>
+                          <strong>Phone:</strong> <%= order.shippingDetails.phoneNumber %><br>
+                          <strong>Address:</strong> <%= order.shippingDetails.address %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card h-100 border-0 bg-light">
+                      <div class="card-body">
+                        <h6 class="card-title fw-bold mb-3">Order Information</h6>
+                        <p class="card-text mb-0">
+                          <strong>Order ID:</strong> <small class="text-break"><%= order._id %></small><br>
+                          <strong>Date:</strong> <%= new Date(order.createdAt).toLocaleString() %><br>
+                          <strong>Status:</strong> <span class="badge bg-<%= order.status === 'delivered' ? 'success' : order.status === 'shipped' ? 'info' : order.status === 'confirmed' ? 'primary' : 'warning' %>">
+                            <%= order.status.charAt(0).toUpperCase() + order.status.slice(1) %>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <h6 class="fw-bold mb-3">Order Items</h6>
+                <div class="table-responsive">
+                  <table class="table align-middle mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th style="width: 50%">Product</th>
+                        <th style="width: 15%">Price</th>
+                        <th style="width: 15%">Quantity</th>
+                        <th style="width: 20%">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% order.items.forEach(item => { %>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="rounded border me-2" style="width: 50px; height: 50px; overflow: hidden;">
+                              <img src="<%= item.product.image %>" alt="<%= item.product.name %>" class="w-100 h-100" style="object-fit: cover;">
+                            </div>
+                            <span class="text-truncate"><%= item.product.name %></span>
+                          </div>
+                        </td>
+                        <td class="text-nowrap">£<%= item.product.price.toFixed(2) %></td>
+                        <td><%= item.quantity %></td>
+                        <td class="text-nowrap">£<%= (item.product.price * item.quantity).toFixed(2) %></td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="3" class="text-end border-0"><strong>Total:</strong></td>
+                        <td class="border-0"><strong>£<%= order.totalAmount.toFixed(2) %></strong></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+      <% } else { %>
+      <p class="text-muted mb-0">No orders found.</p>
+      <% } %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<!-- Toast Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <!-- Success Messages -->
+  <% if (typeof success_msg !== 'undefined' && success_msg.length > 0) { %>
+  <div
+    class="toast align-items-center text-white bg-success border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="fas fa-check-circle me-2"></i>
+        <%= success_msg %>
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Error Messages -->
+  <% if (typeof error_msg !== 'undefined' && error_msg.length > 0) { %>
+  <div
+    class="toast align-items-center text-white bg-danger border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="fas fa-exclamation-circle me-2"></i>
+        <%= error_msg %>
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Info Messages -->
+  <% if (typeof info_msg !== 'undefined' && info_msg.length > 0) { %>
+  <div
+    class="toast align-items-center text-white bg-info border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="fas fa-info-circle me-2"></i>
+        <%= info_msg %>
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- General Error -->
+  <% if (typeof error !== 'undefined' && error.length > 0) { %>
+  <div
+    class="toast align-items-center text-white bg-danger border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <%= error %>
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Validation Errors -->
+  <% if (typeof errors !== 'undefined' && errors.length > 0) { %> <%
+  errors.forEach(function(error) { %>
+  <div
+    class="toast align-items-center text-white bg-danger border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="fas fa-exclamation-circle me-2"></i>
+        <%= error.msg %>
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <% }); %> <% } %>
+</div>
